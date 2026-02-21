@@ -40,6 +40,14 @@ test_that("can control the placement of levels with all missing data", {
   expect_equal(levels(f2), c("c", "a", "b"))
 })
 
+test_that("fct_reorder() works with character input when .x has NAs", {
+  .x <- c(1, 2, NA)
+
+  f_chr <- fct_reorder(c("a", "b", "c"), .x, .na_rm = TRUE)
+  f_fct <- fct_reorder(fct(c("a", "b", "c")), .x, .na_rm = TRUE)
+  expect_equal(levels(f_chr), levels(f_fct))
+})
+
 test_that("fct_reorder() complains if summary doesn't return single value", {
   expect_snapshot(error = TRUE, {
     fct_reorder("a", 1, function(x) c(1, 2))

@@ -80,11 +80,11 @@ fct_reorder <- function(
 
     if (isTRUE(.na_rm)) {
       .x <- .x[!miss]
-      .f <- .f[!miss]
+      f <- f[!miss]
     }
   }
 
-  summary <- tapply(.x, .f, function(x) .fun(x, ...), default = .default)
+  summary <- tapply(.x, f, function(x) .fun(x, ...), default = .default)
   check_single_value_per_group(summary, ".fun")
   lvls_reorder(f, order(summary, decreasing = .desc))
 }

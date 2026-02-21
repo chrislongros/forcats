@@ -1,5 +1,8 @@
 # forcats (development version)
 
+* `fct_reorder()` now handles missing values in `.x` consistently regardless
+  of whether `.f` is a character vector or a factor (#359).
+
 # forcats 1.0.1
 
 * `fct_cross()` now varies the levels in the last factor fastest (@Adam-AKong, #373).
