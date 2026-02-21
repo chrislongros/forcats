@@ -1,5 +1,7 @@
 # forcats (development version)
 
+* `fct()` gains an `ordered` argument to create ordered factors (#363).
+
 # forcats 1.0.1
 
 * `fct_cross()` now varies the levels in the last factor fastest (@Adam-AKong, #373).

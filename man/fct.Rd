@@ -4,7 +4,7 @@
 \alias{fct}
 \title{Create a factor}
 \usage{
-fct(x = character(), levels = NULL, na = character())
+fct(x = character(), levels = NULL, na = character(), ordered = FALSE)
 }
 \arguments{
 \item{x}{A character vector. Values must occur in either \code{levels} or \code{na}.}
@@ -14,6 +14,9 @@ be computed from the unique values of \code{x}, in the order in which they
 occur.}
 
 \item{na}{A character vector of values that should become missing values.}
+
+\item{ordered}{A logical which determines the "ordered" status of the
+factor. Defaults to \code{FALSE}.}
 }
 \value{
 A factor.
@@ -26,6 +29,9 @@ specification of \code{levels} is inconsistent with the values in \code{x}.
 # Use factors when you know the set of possible values a variable might take
 x <- c("A", "O", "O", "AB", "A")
 fct(x, levels = c("O", "A", "B", "AB"))
+
+# Create an ordered factor
+fct(x, levels = c("O", "A", "B", "AB"), ordered = TRUE)
 
 # If you don't specify the levels, fct will create from the data
 # in the order that they're seen

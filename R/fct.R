@@ -8,12 +8,17 @@
 #'   be computed from the unique values of `x`, in the order in which they
 #'   occur.
 #' @param na A character vector of values that should become missing values.
+#' @param ordered A logical which determines the "ordered" status of the
+#'   factor. Defaults to `FALSE`.
 #' @return A factor.
 #' @export
 #' @examples
 #' # Use factors when you know the set of possible values a variable might take
 #' x <- c("A", "O", "O", "AB", "A")
 #' fct(x, levels = c("O", "A", "B", "AB"))
+#'
+#' # Create an ordered factor
+#' fct(x, levels = c("O", "A", "B", "AB"), ordered = TRUE)
 #'
 #' # If you don't specify the levels, fct will create from the data
 #' # in the order that they're seen
@@ -33,10 +38,11 @@
 #' factor(c("y", "x"))
 #' # fct() uses in order of appearance:
 #' fct(c("y", "x"))
-fct <- function(x = character(), levels = NULL, na = character()) {
+fct <- function(x = character(), levels = NULL, na = character(), ordered = FALSE) {
   check_character(x)
   check_character(levels, allow_null = TRUE)
   check_character(na)
+  check_bool(ordered)
 
   x[x %in% na] <- NA
 
@@ -53,5 +59,5 @@ fct <- function(x = character(), levels = NULL, na = character()) {
     ))
   }
 
-  factor(x, levels = levels, exclude = NULL)
+  factor(x, levels = levels, exclude = NULL, ordered = ordered)
 }

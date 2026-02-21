@@ -15,6 +15,11 @@
     Condition
       Error in `fct()`:
       ! `na` must be a character vector, not the number 1.
+    Code
+      fct("x", ordered = "yes")
+    Condition
+      Error in `fct()`:
+      ! `ordered` must be `TRUE` or `FALSE`, not the string "yes".
 
 # clear error if levels are incomplete
 
